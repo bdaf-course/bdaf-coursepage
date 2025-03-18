@@ -23,7 +23,6 @@ Administrative TA: Yen
 | | - [Can we rollback Ethereum? - tweet post by Tim Beiko](https://x.com/TimBeiko/status/1893412457567383559) | | |
 | | - [ERC20](https://eips.ethereum.org/EIPS/eip-20) | | |
 | | - [ERC721](https://eips.ethereum.org/EIPS/eip-721) | | |
-
 | 2023-03-18 | [Introduction to EVM](./slides/BDAF_4_Intro_to_EVM.pdf) |    |    |
 | | **Readings:** | | |
 | | - [Ethereum Beige Paper](https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf) | | |
