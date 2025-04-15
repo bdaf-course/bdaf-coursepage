@@ -26,9 +26,11 @@ Administrative TA: Yen
 | 2023-03-18 | [Introduction to EVM](./slides/BDAF_4_Intro_to_EVM.pdf) |  [Lab3](./lab03/README.md)   |    |
 | | **Readings:** | | |
 | | - [Ethereum Beige Paper](https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf) | | |
-| 2023-03-25 | [Stablecoins](./slides/BDAF_5_Stablecoins.pdf) &  |   |    |
+| 2023-03-25 | [Stablecoins](./slides/BDAF_5_Stablecoins.pdf) |   |    |
 | 2023-04-01 | ----- No Class for ETHTaipei |   |    |
 | 2023-04-08 | [Lending Protocol](./slides/BDAF_6_Lending.pdf) & [Yield Aggregator](./slides/BDAF_7_Yield_Aggregators.pdf) |   |    |
 | 2023-04-15 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) |   |    |
+| 2023-04-22 | Review of Key concepts|   |  Lab4 & Midterm Proposal Idea Draft |
+| 2023-04-29 | Guest Lecture by GuiltyGyoza: Decentralised systems: blockchain and beyond |   | Lab5 & Midterm Proposal |
 
 ```
