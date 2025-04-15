@@ -32,5 +32,10 @@ Administrative TA: Yen
 | 2023-04-15 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) |   |    |
 | 2023-04-22 | Review of Key concepts|   |  Lab4 & Midterm Proposal Idea Draft |
 | 2023-04-29 | Guest Lecture by GuiltyGyoza: Decentralised systems: blockchain and beyond |   | Lab5 & Midterm Proposal |
+| 2023-05-06 | TBD |   |  |
+| 2023-05-13 | TBD |   |  |
+| 2023-05-20 | TBD |   |  |
+| 2023-05-27 | MEV (tentative, online)|   |  |
+| 2023-06-03 |  Potential Final Project Presentation |   |  |
 
 ```
