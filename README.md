@@ -38,6 +38,5 @@ Administrative TA: Yen
 | 2023-05-27 | MEV (tentative, online)|   |  |
 | 2023-06-03 |  Potential Final Project Presentation |   |  |
 
-```
 
 The studnets of this course are required to join ETHTaipei hackathon. Visit this page to see the full list of projects - [Hackathon Project Showcase](./Hackathon.md)
