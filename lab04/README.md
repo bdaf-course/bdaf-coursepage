@@ -79,7 +79,7 @@ Someone thinks it's a good idea to build a vault that does nothing and expect pe
 
 Your vault should have these interface:
 > - address public underlyingToken: this is the token that the vault receives
-> - uint256 public sharePrice: this is the price of 1 share compared t
+> - uint256 public sharePrice: this is the price of 1 share relative to the underlying token
 > - function deposit(uint256 _amountUnderlying): takes the funds from the user and issues 
 > - function withdraw(uint256 _amountShares): burns the specified shares and returns back the underlying token.
 > - function takeFeeAsOwner(uint256 _amountUnderlying): this transfers money to the owner of the contract and can only be invoked by the owner.
@@ -87,6 +87,8 @@ Your vault should have these interface:
 note `takeFeeAsOwner()` is not a typical concept and only here per the design request.
 
 sharePrice should properly reflect the value of each shares with respect to the tokens that are sitting in the vault, and your tests should verify this.
+
+When users deposit into the vault, they should receive some share token.
 
 ## Part 2: Wait, this can be attacked?
 
