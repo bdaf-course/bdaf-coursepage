@@ -13,6 +13,12 @@
 
 
 ## 2024
-
+- [Circoda](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4jbahm0k3ny501hlji3yo1/idea)
+- [COCOA](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4wseee0knky5017s517lk3/idea)
+- [Cofession Room](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4zbzm60kx3y5017jop913j/idea)
+- [EtherFrigate](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu416f8o0isewc01oguzqbfa/idea)
+- [gonnx](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4iw0yc0jnawc01egwdglx8/idea)
+- [Pearl Wars: The Hamster Tea Chronicles](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4z5ei90knrw201bt4ppl2u/idea)
+- [UniswapV3 for Zircuit](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4ez8xs0jsey501ydezfmja/idea)
 
 ## 2023 
