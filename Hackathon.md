@@ -1,6 +1,7 @@
 # Hackathon Project Showcase
 
-The course has made hackathon a requirement to get students to experience the actual culture and vibe of web3 hackathons
+The course has made hackathon a requirement to get students to experience the actual culture and vibe of web3 hackathons.
+
 Note that these are students that have started learning Solidity for only 2 months through this course
 
 ## 2025 ETHGlobal Taipei
