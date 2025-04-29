@@ -4,15 +4,14 @@ The course has made hackathon a requirement to get students to experience the ac
 Note that these are students that have started learning Solidity for only 2 months through this course
 
 ## 2025 ETHGlobal Taipei
-Most projects have win pool prizes from either Celo or Worldcoin - not listing those here.
-- [BinaryVoting](https://ethglobal.com/showcase/binaryvoting-3mp2d)
-- [CeloContract](https://ethglobal.com/showcase/celocontract-zow3d)
-- [CoffeeSwap](https://ethglobal.com/showcase/coffeeswap-m2is1)
-- [Eventick](https://ethglobal.com/showcase/eventick-664j9)
-- [Just Pay](https://ethglobal.com/showcase/just-pay-tfw2z): Winner of Circle - Build a Multichain USDC Payment System, 2,000 USD
-- [KingOfWeb3Knowledge](https://ethglobal.com/showcase/kingofweb3knowledge-mh2wu)
-- [knowledge king](https://ethglobal.com/showcase/knowledge-king-867d0)
-- [Locked Vault DApp](https://ethglobal.com/showcase/locked-vault-dapp-k2tkh)
+- [BinaryVoting](https://ethglobal.com/showcase/binaryvoting-3mp2d) - Celo L2 Pool Prize
+- [CeloContract](https://ethglobal.com/showcase/celocontract-zow3d) - Celo L2 Pool Prize
+- [CoffeeSwap](https://ethglobal.com/showcase/coffeeswap-m2is1) - World Pool Prize
+- [Eventick](https://ethglobal.com/showcase/eventick-664j9) - World Pool Prize
+- [Just Pay](https://ethglobal.com/showcase/just-pay-tfw2z): **Winner of Circle - Build a Multichain USDC Payment System, 2,000 USD**
+- [KingOfWeb3Knowledge](https://ethglobal.com/showcase/kingofweb3knowledge-mh2wu) -  World Pool Prize
+- [knowledge king](https://ethglobal.com/showcase/knowledge-king-867d0) - Celo L2 Pool Prize
+- [Locked Vault DApp](https://ethglobal.com/showcase/locked-vault-dapp-k2tkh) - Celo L2 Pool Prize
 - [WalletPilot](https://ethglobal.com/showcase/walletpilot-6y22f)
 
 
@@ -33,7 +32,7 @@ Most projects have win pool prizes from either Celo or Worldcoin - not listing t
 
 ## 2023 ETHTaipei
 - [IdealTown](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgrysn9w53750127tcf2dsm7/idea) - Blocto 1st prize 500 USD, PSE 833 USD, 
-- [StarVoting](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgruv8nx1497001yvdlzf0ii1/idea) - Gnosis 1st prize 8000 USD, PSE 833 USD, 
+- [StarVoting](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgruv8nx1497001yvdlzf0ii1/idea) -  ETHTaipei Official Finalist, Gnosis 1st prize 8000 USD, PSE 833 USD, 
 - [Bababona](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgs98hqq27352001ykdn3rx3cg/idea) - Autopass 2nd prize 2000 USD
 - [FATSAI](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgsriz0s62538501ykpwm5t01u/idea)
 - [SemaphoreWithWallets](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgspzfan5773300101f3w9kjtr/idea)
