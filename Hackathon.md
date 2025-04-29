@@ -17,7 +17,6 @@ Most projects have win pool prizes from either Celo or Worldcoin - not listing t
 
 
 ## 2024
-Note: haven't got around to check which team won what prizes yet
 - [Circoda](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4jbahm0k3ny501hlji3yo1/idea) - Best Applications for Emerging Use Cases with Circle Products, 1,000 USD
 - [COCOA](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4wseee0knky5017s517lk3/idea) - ETHTaipei Official Finalist
 - [Cofession Room](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4zbzm60kx3y5017jop913j/idea)
