@@ -35,7 +35,7 @@ Visit this page to see the full list of past projects - [Hackathon Project Showc
 | 2023-04-08 | [Lending Protocol](./slides/BDAF_6_Lending.pdf) & [Yield Aggregator](./slides/BDAF_7_Yield_Aggregators.pdf) |   |    |
 | 2023-04-15 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) |[Lab4](./lab04/README.md) |    |
 | 2023-04-22 | [Review of Key concepts](./KeyConcepts.md) |   |  Lab4 & Midterm Proposal Idea Draft |
-| 2023-04-29 | [Onsite Lab](./slides/OnsiteLab.md |   | Midterm Proposal |
+| 2023-04-29 | [Onsite Lab](./slides/OnsiteLab.md) |   | Midterm Proposal |
 | 2023-05-06 | Guest Lecture by (1) GuiltyGyoza: Decentralised systems: blockchain and beyond & (2) Jeff Lau: ENS V2  |   |  |
 | 2023-05-13 | TBD |   |  |
 | 2023-05-20 |  Oskar: Introduction to ZK |   |  |
