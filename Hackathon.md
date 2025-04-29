@@ -2,7 +2,7 @@
 
 The course has made hackathon a requirement to get students to experience the actual culture and vibe of web3 hackathons.
 
-Note that these are students that have started learning Solidity for only 2 months through this course
+Note that at the time of hackathon, these are students that have ONLY started learning Solidity for 2 months through this course
 
 ## 2025 ETHGlobal Taipei
 - [BinaryVoting](https://ethglobal.com/showcase/binaryvoting-3mp2d) - Celo L2 Pool Prize
