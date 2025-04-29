@@ -28,7 +28,7 @@ Note that at the time of hackathon, these are students that have ONLY started le
 ### From Past year's students
 - [TokemonGo](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu31yynb0i3ewc01gvdmrh6l/idea)
 - [ADBoost](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/cltzjgb800ff9w201mcsixo91/idea)
-- [ETHPaymaster](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/cltjx090k04c7wc01w1ib9lbi/idea]  
+- [ETHPaymaster](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/cltjx090k04c7wc01w1ib9lbi/idea)  
 
 
 ## 2023 ETHTaipei
