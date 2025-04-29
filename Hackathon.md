@@ -1,11 +1,15 @@
 # Hackathon Project Showcase
 
-## 2025
+The course has made hackathon a requirement to get students to experience the actual culture and vibe of web3 hackathons
+Note that these are students that have started learning Solidity for only 2 months through this course
+
+## 2025 ETHGlobal Taipei
+Most projects have win pool prizes from either Celo or Worldcoin - not listing those here.
 - [BinaryVoting](https://ethglobal.com/showcase/binaryvoting-3mp2d)
 - [CeloContract](https://ethglobal.com/showcase/celocontract-zow3d)
 - [CoffeeSwap](https://ethglobal.com/showcase/coffeeswap-m2is1)
 - [Eventick](https://ethglobal.com/showcase/eventick-664j9)
-- [Just Pay](https://ethglobal.com/showcase/just-pay-tfw2z)
+- [Just Pay](https://ethglobal.com/showcase/just-pay-tfw2z): Winner of Circle - Build a Multichain USDC Payment System, 2k
 - [KingOfWeb3Knowledge](https://ethglobal.com/showcase/kingofweb3knowledge-mh2wu)
 - [knowledge king](https://ethglobal.com/showcase/knowledge-king-867d0)
 - [Locked Vault DApp](https://ethglobal.com/showcase/locked-vault-dapp-k2tkh)
@@ -13,6 +17,7 @@
 
 
 ## 2024
+Note: haven't got around to check which team won what prizes yet
 - [Circoda](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4jbahm0k3ny501hlji3yo1/idea)
 - [COCOA](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4wseee0knky5017s517lk3/idea)
 - [Cofession Room](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4zbzm60kx3y5017jop913j/idea)
