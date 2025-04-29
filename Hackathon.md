@@ -16,7 +16,7 @@ Most projects have win pool prizes from either Celo or Worldcoin - not listing t
 - [WalletPilot](https://ethglobal.com/showcase/walletpilot-6y22f)
 
 
-## 2024
+## 2024 ETHTaipei
 - [Circoda](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4jbahm0k3ny501hlji3yo1/idea) - Best Applications for Emerging Use Cases with Circle Products, 1,000 USD
 - [COCOA](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4wseee0knky5017s517lk3/idea) - ETHTaipei Official Finalist
 - [Cofession Room](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/clu4zbzm60kx3y5017jop913j/idea)
@@ -31,7 +31,7 @@ Most projects have win pool prizes from either Celo or Worldcoin - not listing t
 - [ETHPaymaster](https://taikai.network/ethtaipei/hackathons/hackathon-2024/projects/cltjx090k04c7wc01w1ib9lbi/idea]  
 
 
-## 2023 
+## 2023 ETHTaipei
 - [IdealTown](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgrysn9w53750127tcf2dsm7/idea) - Blocto 1st prize 500 USD, PSE 833 USD, 
 - [StarVoting](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgruv8nx1497001yvdlzf0ii1/idea) - Gnosis 1st prize 8000 USD, PSE 833 USD, 
 - [Bababona](https://taikai.network/ethtaipei/hackathons/hackathon/projects/clgs98hqq27352001ykdn3rx3cg/idea) - Autopass 2nd prize 2000 USD
