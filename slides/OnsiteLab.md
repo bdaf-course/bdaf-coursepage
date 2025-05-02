@@ -1,8 +1,8 @@
 # Onsite Lab
 
 ## Reference
-https://explorer.garfield-testnet.zircuit.com/
-https://docs.zircuit.com/garfield-testnet/quick-start
+* https://explorer.garfield-testnet.zircuit.com/
+* https://docs.zircuit.com/garfield-testnet/quick-start
 
 ## Goal
 Get as many points as you can from the OnSiteChecker
