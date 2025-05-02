@@ -15,10 +15,10 @@ Token deployed to: 0x0CB70e82cDA48ac413d15dDb5782130F57ef8844
 No2Flashloan deployed to: 0x19839DfeCA322bb9Ea042bb2154fe3C77c93E857
 No2WhaleOnlyBadge deployed to: 0xac9a1d6E3452D55dc42aBB8AE3ACEAd98C089FAc
 
-### (Deprecated) Onsite Lab 3 
-No3ProofOfProxy deployed to: 0xC0b4f10e6b91B10d77CC80a34d457663f632431D
+### Onsite Lab 3 
+No3ProofOfProxy deployed to: 0x76C44B7Fa2f091d9465032dC5B8F111Dcf6ECf46
 
-### (Deprecated) Onsite Checker
-OnSiteChecker deployed to: 0x53040a293297fA879329f418E6A28E816832A867 
+* Requirement: use proxy to get the badge above. You can use the [proxy implementation in OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/proxy)
 
-Note: OnsiteChcker and a renewed Onsite Lab3 will be announced soon
+### Onsite Checker
+OnSiteChecker deployed to: 0xE29131e292C3c6Eb85068d3d8E5fDEAb23E3981d 
