@@ -40,6 +40,7 @@ Visit this page to see the full list of past projects - [Hackathon Project Showc
 | 2023-05-13 | TBD |   |  |
 | 2023-05-20 |  Oskar: Introduction to ZK |   |  |
 | 2023-05-27 | MEV (tentative, online)|   |  |
-| 2023-06-03 |  Potential Final Project Presentation |   |  |
+| 2023-06-03 |  No class, focus for your finals & final projects! |   |  |
+| 2023-06-10 |  Potential Final Project Presentation |   |  |
 
 
