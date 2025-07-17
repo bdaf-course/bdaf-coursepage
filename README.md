@@ -8,6 +8,7 @@ Administrative TA: Yen
 
 ## Hackathon
 The studnets of this course are required to join ETHTaipei hackathon. 
+
 Visit this page to see the full list of past projects - [Hackathon Project Showcase](./Hackathon.md)
 
 ## Lecture schedule & materials
