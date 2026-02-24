@@ -4,7 +4,7 @@ Course ID: NYCU CSIC30161
 
 Hosted by: Martinet Lee
 
-Administrative TA: Yen
+Administrative TA: Oatmeal
 
 ## Hackathon
 The students of this course are required to join ETHTaipei hackathon when it happens within the semester. 
