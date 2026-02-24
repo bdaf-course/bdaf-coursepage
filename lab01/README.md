@@ -1,6 +1,6 @@
 # BDaF 2026 Lab01 Solidity by yourself
 
-- Deadline: March 4th before lecture
+- Deadline: March 3rd before lecture
 - Submission: [Link](https://docs.google.com/forms/d/e/1FAIpQLSc-iwSQLdPdPJdE5m5HtBgVW-tHVHzW7L-BDguKsGUgicillg/viewform?usp=dialog)
 
 ## Readings
