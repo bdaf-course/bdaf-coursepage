@@ -1,7 +1,7 @@
 # BDaF 2026 Lab01 Solidity by yourself
 
 - Deadline: March 3rd before lecture
-- Submission: [Link](https://docs.google.com/forms/d/e/1FAIpQLSc-iwSQLdPdPJdE5m5HtBgVW-tHVHzW7L-BDguKsGUgicillg/viewform?usp=dialog)
+- Submission: [Link](https://forms.gle/usuuB6K9K5VrzQ858)
 
 ## Readings
   - Framework to use (choose one)
@@ -14,7 +14,7 @@
  
 ## Pre-requisites
 1. Create a repository on GitHub to **host ALL future labs from this course**
-2. Share the repository with the github account `bdaf-course`, `martinetlee`, and `grace0950`
+2. Share the repository with the github account `bdaf-course`, `martinetlee`, and `Otmeal`
 3. Have this assignment be in the folder `lab01`
 
 ## Project Overview:
