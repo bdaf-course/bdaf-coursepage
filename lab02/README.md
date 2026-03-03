@@ -1,6 +1,6 @@
-# BDaF 2025 Lab02 Token Lock
+# BDaF 2025 Lab02 Peer to Peer Token Trade
 
-- Deadline: March 11th 23:59 (1 week deadline!)
+- Deadline: March 10th, 18:30 before the lecture!
 - Submission: 
 
 ## Readings
@@ -12,27 +12,25 @@
 
 ## Project Overview
 
-You wanted to create a very simple option like contract - users are allowing you to trade against their funds during a given time for a predefined rate of the underlying asset. 
+A peer-to-peer ERC20 trading smart contract that allows users to create time-limited trade offers and others to fulfill them before expiry. The contract enforces trade validity, emits events for creation and settlement, charges a 0.1% fee on successful trades, and enables the owner to withdraw accumulated fees.
 
 ### Contract Requirement
 
-Create an ERC20 token with: 
+Create TWO ERC20 tokens with: 
 - total supply of 100,000,000 
 - with 18 decimals
+- Name them differently!
 
-Create a token lock contract that:
-- owner is able to set a start time and end time for token lock (`setStartTime(...)` and `setEndTime(...)`)
-- any user can lock their ETH into the contract before the start time (`lock(...)`)
-- any user can unlock their ETH from the contract after the end time (`unlock(...)`)
-- when user unlock their ETH, they should also receive the designated reward as specified below
-  - if their ETH was not taken, they get their ETH and the small reward
-  - if their ETH was taken, they can still `unlock` and receive their reward
-- before the start time and end time were set by the owner, no user should be able to lock their ETH.
-- the owner can decide to trade tokens with the users' deposit (`tradeUserFunds(...)`)
-- to reward people using your contract, you are going to use the ERC20 created above
-  - any user who locked and able to withdraw: you reward them with 1,000 tokens
-  - any user who locked and was not able to withdraw (essentially, the owner took their ETH): you reward them with 1000 + (ETH locked * 2500) tokens
-- owner can withdraw ETH from the contract, but the source of funds should only come from the ETH they have traded using `tradeUserFunds()` and cannot exceed that (`getETH()`)
+Create a token trade contract that:
+- the deployer will set the two tokens that the contract is working with
+- any user can set up trade with the interface: `setupTrade(address inputTokenForSale, uint256 inputTokenAmount, uint256 outputTokenAsk, uint256 expiry)`
+  - this should emit an event. Think about what should be included in the event. 
+- any user can fulfill the trade with the interface `settleTrade(uint256 id)` as long as the trade is not expired
+  - this should emit an event.  Think about what should be included in the event. 
+- expired trade should not be able to be fulfilled, and should allow the original user to retain his/her tokens.
+- for all trades, the owner should get 0.1% fee the sale.
+- there should be a function `withdrawFee()` that can be accessed by the owner only and can get all the fee accumulated in the contract. 
+
 
 ### Project Requirement
 - Project MUST use either hardhat or foundry as framework
@@ -42,8 +40,6 @@ Create a token lock contract that:
 - Both contracts should be deployed on Zircuit (record the addresses)
 - Both contract should be verified
 - Execute the full flow of the token lock contract above on chain, we will ask for transaction hashes of the following:
-  - a user (Alice) locking their ETH into the contract
-  - Alice unlock their ETH and receives a small reward
-  - another user (Bob) locking their ETH into the contract
-  - owner executes `tradeUserFunds()` on Bob
-  - Bob unlock the rewards (no ETH received)
+  - Alice sets up trade
+  - Bob settles trade
+  - Owner withdraw fee
