@@ -1,7 +1,7 @@
-# BDaF 2025 Lab02 Peer to Peer Token Trade
+# BDaF 2026 Lab02 Peer to Peer Token Trade
 
 - Deadline: March 10th, 18:30 before the lecture!
-- Submission: 
+- Submission: [Link](https://forms.gle/s3hUNKXo1E487Kao6)
 
 ## Readings
   - ERC20
@@ -31,14 +31,13 @@ Create a token trade contract that:
 - for all trades, the owner should get 0.1% fee the sale.
 - there should be a function `withdrawFee()` that can be accessed by the owner only and can get all the fee accumulated in the contract. 
 
-
 ### Project Requirement
 - Project MUST use either hardhat or foundry as framework
 - Tests must be present and tests the requirements listed above.
 - Tests should pass.
   - TA should be able to run it via `npx hardhat test` (hardhat) or `forge test` (foundry)
-- Both contracts should be deployed on Zircuit (record the addresses)
-- Both contract should be verified
+- All three contracts should be deployed on Zircuit testnet (record the addresses)
+- All three contract should be verified
 - Execute the full flow of the token lock contract above on chain, we will ask for transaction hashes of the following:
   - Alice sets up trade
   - Bob settles trade
