@@ -1,64 +1,270 @@
-# BDaF 2025 Lab03 Warming up for the Hackathon
+# BDaF 2026 Lab03 — Signature-Based Token Approval
 
-- Deadline: March 25th before the lecture (1 week deadline!)
-- Submission: 
+**Deadline:** March 17th 
 
-## Part 1: A contract that deploys contracts, with create2
+**Submission:** 
 
-We will practice basic Factory pattern with create2, getting a taste of predetermined address
+---
 
-### Project Requirement
-* write a smart contract that can withdraw any ERC20 tokens from it by its owner
-* write a factory contract that can deploy the above contract using Create2, you can use [OpenZeppelin's Create2 library](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Create2.sol)
-    - note that we should be able to specify the address of the owner, and the owner address should be used to determine the address of the smart contract that will be deployed
-* On-chain actions (4 tx hashes to be recorded)
-    1. Deploy the factory on Zircuit
-    2. Send tokens to a pre-computed address
-    3. Deploy the smart contract to the pre-computed address
-    4. Withdraw the tokens
-* Note that action 3 must come after action 2. We will check the time.
+# Readings
 
-- To save time, no tests are required for this project. 
+### Ethereum Basics
+- https://ethereum.org/en/developers/docs/accounts/
 
-## Part 2: Warming up for the Hackathon
-Pick projects on the list and build pocs with their techstack, with frontend
-- https://ethglobal.com/events/taipei/prizes
+### OpenZeppelin
+- https://docs.openzeppelin.com/contracts/5.x/api/utils#ECDSA
 
-For this project, you can team up with other class members
+### Solidity Cryptography
+- https://docs.soliditylang.org/en/latest/units-and-global-variables.html#mathematical-and-cryptographic-functions
 
-### Ideas to build
+---
 
-#### Useless fun stuff
-- Detects user wallet actions and generate image for that. Imagine you feed your pet with wallet actions. Underlying this can be a reputation protocol - allowing users to link multiple wallets together.
+# Project Overview
 
-#### UX
-- How can I send tokens to someone who doesn't have a wallet, but only email?
+In Ethereum, many interactions require users to send transactions and pay gas. However, users can also **sign messages off-chain** and allow someone else to submit those signatures on-chain.
 
-#### Tooling
-- Tooling that given a set of deployer addresses, crawls the smart contract it deployed and draw the graph of the relationship between smart contracts and addresses
-- Tooling that given an address, it finds all relevant addresses that the address has interacted with and try determine these addresses automatically. (may consider use AI here)
-- Given an address, create a google sheet filled with all relevant transactions on different chains, specifically token transfers or any value transfer transactions. Try annotate those transactions 
+In this lab, you will implement a token approval mechanism where the **token holder signs an approval message off-chain**, and **another user submits the signed message on-chain** to update the allowance.
 
-#### AI related ideas
-- Abstract the wallet away from the user, allow user use AI to send/swap tokens through different chains 
-- [MCP](https://www.anthropic.com/news/model-context-protocol) for Crypto use cases 
-    - MCP for datasets (Nodit / Alchemy / Tenderly?)
-    - MCP for wallet actions (create wallet / transfer tokens / bridge / etc)
-- An AI that determines the reputation of an address, given some description of the definition of reputation
-- RPC endpoint that detects user transaction and detects whether it is being phished / scammed. Can use AI for detection and build up the blacklist. 
-- Transaction Explainer - given a transaction hash, expalin what happens in the transaction
-- AI that helps deploy contract and frontend on different chains.
-- DAO voting with AI bars - before you vote, you must demonstrate knowledge on the topic. You get different multipliers on your voting power depending on how well you've done.
+The goal of this assignment is to help you understand:
 
-Nodit: multichain web3 infrastructure 
-DEX Aggregator: 1inch
-L1 & L2s: World, Rootstock, Flow, Arbitrum, Polygon, Zircuit, ENS
+- how signatures work in Ethereum
+- how to verify signatures in Solidity
+- how replay attacks occur
+- how to prevent replay attacks using nonces
 
-### Project Requirement
+You will use **OpenZeppelin’s `ECDSA` library** to recover the signer from a signature.
 
-- Have a frontend that can interact with Metamask / Wallets
-- Clear integration of the application with a non-L2/L1 Project in an interesting way(could be outside of the list, like ENS, MCP)
-- If you have great ideas that doesn't require frontend, can discuss and get approval
+---
 
-### Deliverables
-- Demo'able application
+# Contract Requirement
+
+Create **ONE ERC20 token contract** with:
+
+- total supply of **100,000,000 tokens**
+- **18 decimals**
+- any **token name and symbol** of your choice
+
+Your contract must implement the following.
+
+---
+
+## Standard ERC20 functionality
+
+Using **OpenZeppelin ERC20** is allowed.
+
+Your token must support:
+
+- `transfer`
+- `approve`
+- `transferFrom`
+- `allowance`
+
+---
+
+## Signature-Based Approval
+
+Implement the following function:
+
+```solidity
+function permit(
+    address owner,
+    address spender,
+    uint256 value,
+    uint256 nonce,
+    uint256 deadline,
+    bytes memory signature
+) public
+```
+
+This function allows `spender` to receive an allowance from `owner` if a **valid signature from `owner`** is provided.
+
+---
+
+### Signed Message Contents
+
+The signed message must include the following fields:
+
+```
+owner
+spender
+value
+nonce
+deadline
+address(this)
+```
+
+Students should compute a hash similar to:
+
+```solidity
+bytes32 hash = keccak256(
+    abi.encodePacked(
+        owner,
+        spender,
+        value,
+        nonce,
+        deadline,
+        address(this)
+    )
+);
+```
+
+Then verify the signature using OpenZeppelin:
+
+```solidity
+address signer = ECDSA.recover(message, signature);
+```
+
+---
+
+## Nonce Tracking
+
+Implement:
+
+```solidity
+mapping(address => uint256) public nonces;
+```
+
+Requirements:
+
+- each successful `permit()` must increment the owner's nonce
+- signatures using an old nonce must fail
+
+---
+
+## Deadline
+
+The signature must contain a **deadline timestamp**.
+
+Requirements:
+
+- if `block.timestamp > deadline`, the transaction must revert
+
+---
+
+## Successful Permit
+
+If the signature is valid and all checks pass, update the allowance:
+
+```solidity
+_approve(owner, spender, value);
+```
+
+---
+
+# Project Requirement
+
+The project must satisfy the following:
+
+- Project MUST use **Hardhat or Foundry**
+- Tests must be included
+- TA must be able to run tests via:
+
+```
+npx hardhat test
+```
+
+or
+
+```
+forge test
+```
+
+The contract must be deployed on **a public testnet**.
+
+Record the following:
+
+- deployed contract address
+- contract verification link
+- transaction hashes demonstrating the required flow
+
+---
+
+# Required Flow Demonstration
+
+Demonstrate the following sequence:
+
+1. Alice receives tokens
+2. Alice signs an approval message for Bob **off-chain**
+3. Bob submits `permit()` using Alice's signature
+4. Bob calls `transferFrom()` to transfer tokens from Alice
+
+Record the transaction hashes.
+
+---
+
+# Minimum Test Cases
+
+Your tests must include the following.
+
+---
+
+## Signature Verification
+
+- valid signature successfully executes `permit`
+- signature from wrong signer fails
+
+---
+
+## Nonce Protection
+
+- nonce increases after successful permit
+- reusing the same signature fails
+
+---
+
+## Expiry
+
+- expired signature fails
+
+---
+
+## Allowance
+
+- allowance is correctly updated after permit
+- `transferFrom()` works after permit
+- `transferFrom()` fails if permit was not executed
+
+---
+
+# Hints
+
+Use OpenZeppelin's `ECDSA` library.
+
+Example:
+
+```solidity
+bytes32 hash = keccak256(...);
+bytes32 message = ECDSA.toEthSignedMessageHash(hash);
+address signer = ECDSA.recover(message, signature);
+```
+
+Then verify:
+
+```solidity
+require(signer == owner);
+```
+
+Be careful with:
+
+- nonce usage
+- replay attacks
+- signature encoding
+- message hashing
+
+---
+
+# Deliverables
+
+Submit the following:
+
+- your GitHub repository
+- test files
+- deployed contract address
+- contract verification link
+- transaction hashes demonstrating the required flow
+
+Also include a short write-up answering:
+
+1. Why are signatures useful in Ethereum applications?
+2. What is a replay attack?
+3. How does your contract prevent replay attacks?
