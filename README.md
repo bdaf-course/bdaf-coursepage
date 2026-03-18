@@ -30,10 +30,10 @@ Visit this page to see the full list of past projects - [Hackathon Project Showc
 | | **Readings:** | | |
 | | - [ERC20](https://eips.ethereum.org/EIPS/eip-20) | | |
 | | - [ERC721](https://eips.ethereum.org/EIPS/eip-721) | | |
-| 2026-03-17 | [Introduction to EVM](./slides/BDAF_4_Intro_to_EVM.pdf) |  [Lab4](./lab04/README.md)  |  Lab3  |
+| 2026-03-17 | [Lab-o1](./lab-o1/README.md) &  |  [Lab4](./lab04/README.md) |  Lab3  |
 | | **Readings:** | | |
 | | - [Ethereum Beige Paper](https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf) | | Lab4 |
-| 2026-03-24 | [Stablecoins](./slides/BDAF_5_Stablecoins.pdf) |   |    |
+| 2026-03-24 | [Introduction to EVM](./slides/BDAF_4_Intro_to_EVM.pdf) & [Stablecoins](./slides/BDAF_5_Stablecoins.pdf) |   |    |
 | 2026-03-31 | [Lending Protocol](./slides/BDAF_6_Lending.pdf) & [Yield Aggregator](./slides/BDAF_7_Yield_Aggregators.pdf) |   |    |
 | 2026-04-07 |  Tentative Guest Speaker (Nikita Belenkov, from Anza - Solana R&D company)  |   |  Midterm Proposal Draft Submission  |
 | 2026-04-14 | Tentatively OFF (Midterm week!) |    |
