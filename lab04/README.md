@@ -1,114 +1,307 @@
-# BDaF 2025 Almost everything can be a VAULT
+# BDaF 2026 Lab04 — Membership Board: Storage vs. Merkle Trees
 
-- Deadline: April 25th (Friday midnight 23:59)
-- Submission: 
+**Deadline:** April 21st (Monday midnight 23:59)
 
-## Overview
+**Submission:**
 
-### Basic Idea of the Vault
-You're writing a vault - a very common pattern in Defi that custodies people's funds. The vault simply allow people to deposit and withdraw anytime with the expectation that users' funds will grow (or decrease) proportionally according to the assets that are stored in the vault.
+---
 
-Here's an example to illustrate the idea:
-> 1. A vault is empty.
-> 2. Alice deposits into vault 100 USDC
->     - the vault has 100 USDC.
-> 3. Bob 100 USDC
->     - the vault has 200 USDC.
-> 4. Some entity "donates" 100 USDC into the vault
->     - the vault has 300 USDC.
-> 5. Alice withdraws her shares, she gets 150 USDC
->     - Vault has 150 USDC.
-> 6. Bob withdraws half of his shares, he gets 75 USDC. 
->     - There is still 75 USDC in the vault.
+# Readings
 
-This is commonly being implemented with the concept of "shares", and often times it is issued as ERC20 token when funds are deposited. 
+### Merkle Trees
+- https://opendsa-server.cs.vt.edu/ODSA/Books/usek/gin231-c/spring-2022-39903ab6-41ba-4bfb-9a68-5abc9010a363/TR_930am/html/MerkleTrees.html
+- https://decentralizedthoughts.github.io/2020-12-22-what-is-a-merkle-tree/
 
-Let's expand the example above to get the idea of shares:
+### OpenZeppelin Merkle Proof
+- https://docs.openzeppelin.com/contracts/5.x/api/utils#MerkleProof
 
-> 1. A vault is empty.
-> 2. Alice deposits into vault 100 USDC
->     - the vault has 100 USDC.
->     - vault issues 100 shares to Alice.
-> 3. Bob 100 USDC
->     - the vault has 200 USDC.
->     - vault issues 100 shares to Bob.
-> 4. Some entity "donates" 100 USDC into the vault
->     - the vault has 300 USDC.
->     - NO shares were issued, someone just donated (transferred directly without using the deposit)
-> 5. Alice withdraws her shares, she gets 150 USDC
->     - Vault has 150 USDC.
->     - Alice's 100 shares are burnt
-> 6. Bob withdraws half of his shares, he gets 75 USDC. 
->     - Bob's 50 shares are burnt, he still has 50 shares.
->     - There is still 75 USDC in the vault. 
+### Solidity Gas Optimization
+- https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html
+- https://www.evm.codes/
 
+### Gas Profiling
+- Hardhat Gas Reporter: https://github.com/cgewecke/hardhat-gas-reporter
+- Foundry Gas Reports: https://book.getfoundry.sh/forge/gas-reports
 
-Now as you may have noticed, the value of one share can be different according to the amount of funds held in the contract. So if a third person comes in and deposit later, the vault should issue shares according to the price of share.
+---
 
-> 
-> (Continued from the example above)
+# Project Overview
+
+In this lab, you will build a **Membership Board** contract where an admin manages a list of **1,000 members**. You will implement membership management using three different approaches and compare their gas costs.
+
+The goal of this assignment is to help you understand:
+
+- how on-chain storage costs scale with the number of entries
+- the trade-off between on-chain storage (mapping) and off-chain computation (Merkle proofs)
+- how batching operations can reduce per-unit gas costs
+- how to use gas profiling tools to measure and compare contract execution costs
+
+### Learning Objectives
+
+- Understand the gas cost of `SSTORE` and `SLOAD` operations
+- Compare storage-based membership (mapping) vs. commitment-based membership (Merkle tree)
+- Learn to use gas profiling tools (Hardhat Gas Reporter or Foundry gas reports)
+- Reason about trade-offs: on-chain storage cost vs. off-chain proof generation
+
+---
+
+# Setup
+
+We provide a pre-generated list of **1,000 Ethereum addresses** in [`members.json`](./members.json). You **must use this list** for your assignment so that results are comparable across submissions.
+
+We also provide a script [`generate_members.js`](./generate_members.js) that can generate a fresh list of N addresses if you want to experiment with different sizes:
+
+```bash
+node generate_members.js <N>
+```
+
+This outputs a `members.json` file with the generated addresses. Requires `ethers` (`npm install ethers`).
+The same list must be used across all three approaches while doing gas profiling for different sizes.
+
+You must also generate the **Merkle tree** and **Merkle proofs** off-chain (in your test/script files) for use in Part 3.
+
+> **Hint:** Use the [`@openzeppelin/merkle-tree`](https://github.com/OpenZeppelin/merkle-tree) JavaScript library or [`murky`](https://github.com/dmfxyz/murky) (for Foundry) to generate the tree and proofs off-chain.
+
+---
+
+# Contract Requirements
+
+Create a single contract called `MembershipBoard` with the following functionality.
+
+---
+
+## Part 1: Add Members One-by-One (Mapping)
+
+Implement a function that adds **one member at a time** using a key-value mapping:
+
+```solidity
+mapping(address => bool) public members;
+
+function addMember(address _member) external onlyOwner
+```
+
+Requirements:
+- Only the contract owner can call this function
+- Must store the member in the `members` mapping
+- Must revert if the address is already a member
+- Must emit a `MemberAdded(address indexed member)` event
+
+To register all 1,000 members, this function must be called **1,000 times**.
+
+---
+
+## Part 2: Batch Add Members (Mapping)
+
+Implement a function that adds **multiple members at once** using the same mapping:
+
+```solidity
+function batchAddMembers(address[] calldata _members) external onlyOwner
+```
+
+Requirements:
+- Only the contract owner can call this function
+- Must store each member in the `members` mapping
+- Must revert if any address is already a member
+- Must emit a `MemberAdded(address indexed member)` event for each member
+
+> **Note:** You may need to split the 1,000 members into multiple batches depending on the block gas limit. Record how many batches you used and the size of each batch.
+
+---
+
+## Part 3: Set Merkle Root
+
+Implement a function that stores a **Merkle root** representing the membership list:
+
+```solidity
+bytes32 public merkleRoot;
+
+function setMerkleRoot(bytes32 _root) external onlyOwner
+```
+
+Requirements:
+- Only the contract owner can call this function
+- Must update the `merkleRoot` state variable
+- Must emit a `MerkleRootSet(bytes32 indexed root)` event
+
+The Merkle tree should be constructed off-chain from the same list of 1,000 addresses. The leaf for each address should be:
+
+```solidity
+leaf = keccak256(abi.encodePacked(address))
+```
+
+> **Hint (OpenZeppelin Merkle Tree library):** If you use the `@openzeppelin/merkle-tree` library, use `StandardMerkleTree.of(values, leafEncoding)` where each value is `[address]` and the leaf encoding is `["address"]`. The library handles double-hashing internally, so your contract verification should use `MerkleProof.verify()` from OpenZeppelin which is compatible with this format.
+
+---
+
+## Part 4: Verify Membership (Mapping)
+
+Implement a function that checks membership using the mapping:
+
+```solidity
+function verifyMemberByMapping(address _member) external view returns (bool)
+```
+
+Requirements:
+- Returns `true` if the address exists in the `members` mapping
+- Returns `false` otherwise
+
+---
+
+## Part 5: Verify Membership (Merkle Proof)
+
+Implement a function that checks membership using a Merkle proof:
+
+```solidity
+function verifyMemberByProof(address _member, bytes32[] calldata _proof) external view returns (bool)
+```
+
+Requirements:
+- Computes the leaf hash from the address
+- Verifies the proof against the stored `merkleRoot`
+- Returns `true` if the proof is valid, `false` otherwise
+
+> **Hint:** Use OpenZeppelin's `MerkleProof.verify()`:
+> ```solidity
+> import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 >
-> 7. Carol deposits 75 USDC
->     - the vault issues 50 shares to Carol
->     - the vault has 150 USDC.
-> 
-> Final State overview:
-> - Alice has 150 USDC
-> - Bob has 75 USDC and 50 vault shares
-> - Carol has 50 vault shares
-> - vault has 100 shares issued in total and custodies 150 USDC. The price of a share is `150/100 = 1.5`.
->
+> bytes32 leaf = keccak256(bytes.concat(keccak256(abi.encode(_member))));
+> return MerkleProof.verify(_proof, merkleRoot, leaf);
+> ```
+> Note: The double `keccak256` is required when using OpenZeppelin's `StandardMerkleTree` to prevent second preimage attacks.
 
-There is a [EIP-4626, the vault standard](https://eips.ethereum.org/EIPS/eip-4626) that people have standardized. 
+---
 
-For the assignment's sake, you don't need to follow it (it contains more interface than needed to complete the assignment and complicates the implementation) - it is provided here as a reference and your knowledge.
+# Gas Profiling
 
-### Money sitting untouched is uselss - Basic Vault and opportunity structure.
+This is the **core analysis** of this lab.
 
-In the example above, we assumed that someone donated money to the vault. This is almost never the case. Money needs to be used to generate yield.
+You must measure and record the gas usage of the following **5 actions**:
 
-So we need to take away the money from the vault and "do something with it". We'll also need to maintain the price of share when the funds are being taken away, and even reflect the current value accrual if possible.
+| # | Action | Description |
+|---|--------|-------------|
+| 1 | `addMember` | Gas cost of adding **one** member via `addMember()`. Report the gas for a single call. To register all 1,000 members, multiply by 1,000 (also account for the 21,000 base transaction cost per call). |
+| 2 | `batchAddMembers` | Total gas cost of adding **all 1,000 members** via `batchAddMembers()`. If you split into multiple batches, report the total across all batches. |
+| 3 | `setMerkleRoot` | Gas cost of calling `setMerkleRoot()` once to register all 1,000 members. |
+| 4 | `verifyMemberByMapping` | Gas cost of verifying **one** member using the mapping. |
+| 5 | `verifyMemberByProof` | Gas cost of verifying **one** member using a Merkle proof. |
 
-This is not part of the assignment, but extremely important concept.
+### How to Measure Gas
 
-### Project Requirement
+Use one of the following tools:
 
-## Part 1: A donation only vault - basically useless
+**Hardhat Gas Reporter** (recommended for Hardhat users):
+```bash
+npm install --save-dev hardhat-gas-reporter
+```
 
-Someone thinks it's a good idea to build a vault that does nothing and expect people to donate into it. Additionally, they want a function of `takeFeeAsOwner()` so that they can take money from the funds. You think it's a dumb idea and there are certainly security risk but they pay so you are developing the contract for them.
+Add to `hardhat.config.js`:
+```javascript
+require("hardhat-gas-reporter");
 
-Your vault should have these interface:
-> - address public underlyingToken: this is the token that the vault receives
-> - uint256 public sharePrice: this is the price of 1 share relative to the underlying token
-> - function deposit(uint256 _amountUnderlying): takes the funds from the user and issues 
-> - function withdraw(uint256 _amountShares): burns the specified shares and returns back the underlying token.
-> - function takeFeeAsOwner(uint256 _amountUnderlying): this transfers money to the owner of the contract and can only be invoked by the owner.
+module.exports = {
+  gasReporter: {
+    enabled: true,
+  },
+};
+```
 
-note `takeFeeAsOwner()` is not a typical concept and only here per the design request.
+**Foundry Gas Reports** (recommended for Foundry users):
+```bash
+forge test --gas-report
+```
 
-sharePrice should properly reflect the value of each shares with respect to the tokens that are sitting in the vault, and your tests should verify this.
+You may also use `gasleft()` in Solidity or `tx.receipt.gasUsed` in your test scripts for more granular measurements.
 
-When users deposit into the vault, they should receive some share token.
+---
 
-## Part 2: Wait, this can be attacked?
+# Questions
 
-There is an inherent risk of vault structure, due to loss of precision. Luckily, this can only be applied when the vault is empty. Read here for the details. 
+Answer the following questions in your `README.md`:
 
-Read these: 
-- [Inflation attack by mixBytes](https://mixbytes.io/blog/overview-of-the-inflation-attack)
-- [Security concern of ERC-4626 - inflation attack](https://docs.openzeppelin.com/contracts/4.x/erc4626#inflation-attack)
+1. **Storage cost comparison:** What is the total gas cost of registering all 1,000 members for each of the three approaches (addMember x1000, batchAddMembers, setMerkleRoot)? Which is cheapest and why?
 
-Your goal for part 2 is write a test that demonstrates this attack.
-> - Deployer deploys the vault contract empty
-> - Malice attacks the contract
-> - Bob deposits 100 tokens, but receives no shares
-> - Malice withdraws with more tokens (basically Bob's token)
+2. **Verification cost comparison:** What is the gas cost of verifying a single member using the mapping vs. the Merkle proof? Which is cheaper and why?
 
-### Deliverables
-- A super basic vault contract
-- A complete test suite 
-  - on top of all the unit tests that tests all the functionalities, test the example illustrated in the overview
-- An additional test that demonstrates the inflation attack
-- Answer the question and write a test to demonstrate it: what is the security risk of `takeFeeAsOwner()`?
-- A proper documentation and a well written README on how to run the test
+3. **Trade-off analysis:** The Merkle tree approach is very cheap to store on-chain but requires the verifier to provide a proof. In what scenarios would you prefer the mapping approach over the Merkle tree approach, and vice versa? Consider factors such as:
+   - Who pays for the verification gas?
+   - How often does the membership list change?
+   - Is the full member list public or private?
 
+4. **Batch size experimentation:** Try different batch sizes for `batchAddMembers` (e.g., 50, 100, 250, 500). How does the per-member gas cost change with batch size? Is there a sweet spot?
+
+---
+
+# Project Requirements
+
+- Project MUST use **Hardhat or Foundry**
+- Tests must be included
+- TA must be able to run tests via:
+
+```
+npx hardhat test
+```
+
+or
+
+```
+forge test
+```
+
+---
+
+# Minimum Test Cases
+
+## Adding Members
+
+- Owner can add a single member via `addMember`
+- Non-owner cannot add a member
+- Adding a duplicate member reverts
+- Owner can batch add members via `batchAddMembers`
+- Adding a duplicate in a batch reverts
+- All 1,000 members are correctly stored after batch add
+
+## Setting Merkle Root
+
+- Owner can set the Merkle root
+- Non-owner cannot set the Merkle root
+
+## Verification (Mapping)
+
+- Returns `true` for a registered member
+- Returns `false` for a non-member
+
+## Verification (Merkle Proof)
+
+- Valid proof for a registered member returns `true`
+- Invalid proof returns `false`
+- Proof for a non-member returns `false`
+
+## Gas Profiling
+
+- Gas measurements are recorded for all 5 actions listed above
+- Results are presented in a comparison table
+
+---
+
+# Deliverables
+
+Submit the following in your GitHub repository:
+
+- [ ] `MembershipBoard` contract with all 5 functions
+- [ ] Off-chain Merkle tree generation script
+- [ ] Complete test suite with gas profiling
+- [ ] A `README.md` with:
+  - How to compile and run tests
+  - Gas profiling results in a table format:
+
+| Action | Gas Used |
+|--------|----------|
+| `addMember` (single call) | |
+| `addMember` x1000 (total estimated) | |
+| `batchAddMembers` (all 1,000) | |
+| `setMerkleRoot` | |
+| `verifyMemberByMapping` | |
+| `verifyMemberByProof` | |
+
+  - Written answers to all questions above
+  - Description of batch sizes tested and findings

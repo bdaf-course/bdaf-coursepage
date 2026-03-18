@@ -30,14 +30,14 @@ Visit this page to see the full list of past projects - [Hackathon Project Showc
 | | **Readings:** | | |
 | | - [ERC20](https://eips.ethereum.org/EIPS/eip-20) | | |
 | | - [ERC721](https://eips.ethereum.org/EIPS/eip-721) | | |
-| 2026-03-17 | [Introduction to EVM](./slides/BDAF_4_Intro_to_EVM.pdf) |    |  Lab3  |
+| 2026-03-17 | [Introduction to EVM](./slides/BDAF_4_Intro_to_EVM.pdf) |  [Lab4](./lab04/README.md)  |  Lab3  |
 | | **Readings:** | | |
-| | - [Ethereum Beige Paper](https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf) | | |
+| | - [Ethereum Beige Paper](https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf) | | Lab4 |
 | 2026-03-24 | [Stablecoins](./slides/BDAF_5_Stablecoins.pdf) |   |    |
 | 2026-03-31 | [Lending Protocol](./slides/BDAF_6_Lending.pdf) & [Yield Aggregator](./slides/BDAF_7_Yield_Aggregators.pdf) |   |    |
 | 2026-04-07 |  Tentative Guest Speaker (Nikita Belenkov, from Anza - Solana R&D company)  |   |  Midterm Proposal Draft Submission  |
 | 2026-04-14 | Tentatively OFF (Midterm week!) |    |
-| 2026-04-21 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) | |  |  Lab4 & Midterm Proposal Idea Draft |
+| 2026-04-21 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) | |  Midterm Proposal Idea Draft |
 | 2026-04-28 | [Onsite Lab](./slides/OnsiteLab.md) |   | Midterm Proposal |
 | 2026-05-05 | Account Abstraction  |   |  |
 | 2026-05-12 | MEV |   |  |
