@@ -1,6 +1,6 @@
 # BDaF 2026 Lab04 — Membership Board: Storage vs. Merkle Trees
 
-**Deadline:** April 21st (Monday midnight 23:59)
+**Deadline:** Mar 27st (Friday midnight 23:59)
 
 **Submission:**
 
