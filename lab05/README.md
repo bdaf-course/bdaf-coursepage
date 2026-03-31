@@ -78,7 +78,7 @@ MyTokenV1 token = MyTokenV1(address(proxy));
 
 A `StakeForNFT` contract has been deployed on Ethereum Sepolia testnet. The contract promises to mint you an NFT after you stake your ERC20 tokens.
 
-**Deployed contract address:** [`0x3AD64ABb43D793025a2f2bD9d615fa1447008bFD`](https://sepolia.etherscan.io/address/0x3AD64ABb43D793025a2f2bD9d615fa1447008bFD)
+**Deployed contract address:** [`0xa6FF20737004fb2f632B6b9388C7731B871a201D`](https://sepolia.etherscan.io/address/0xa6FF20737004fb2f632B6b9388C7731B871a201D)
 
 Here is the source code of the contract: [StakeForNFT.sol](./StakeForNFT.sol)
 
@@ -93,7 +93,9 @@ Here is the source code of the contract: [StakeForNFT.sol](./StakeForNFT.sol)
 
 Now try calling `unstake()` on the deployed `StakeForNFT` contract.
 
-**Question:** Did the `unstake` call succeed? Write down the reason it did not succeed.
+**Questions:**
+1. Did calling `unstake()` revert? Did you actually get your tokens back?
+2. What does this tell you about trusting unverified contract source code? A function with the same name and signature can exist on-chain but behave completely differently from what you were shown.
 
 ---
 
@@ -143,8 +145,9 @@ Submit the following:
    - Deployment scripts
 2. Deployed ERC20 proxy contract address
 3. Transaction hash of your `stake` call
-4. A short write-up answering:
-   - Why did `unstake` fail on the deployed contract?
+4. Transaction hash of your `unstake` attempt
+5. A short write-up answering:
+   - What happened when you called `unstake`? Did you get your tokens back?
    - How did you retrieve your tokens?
    - What does this teach you about interacting with unverified contracts?
 5. Transaction hash of your successful `mint` call (NFT received)
