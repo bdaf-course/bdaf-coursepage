@@ -35,6 +35,8 @@ Visit this page to see the full list of past projects - [Hackathon Project Showc
 | | - [Ethereum Beige Paper](https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf) | | Lab4 |
 | 2026-03-24 | [Introduction to EVM](./slides/BDAF_4_Intro_to_EVM.pdf) & [Stablecoins](./slides/BDAF_5_Stablecoins.pdf) |   |    |
 | 2026-03-31 | [Lending Protocol](./slides/BDAF_6_Lending.pdf) & [Yield Aggregator](./slides/BDAF_7_Yield_Aggregators.pdf) | [Lab5](./lab05/README.md)  |    |
+| | **Readings:** | | |
+| | - [Lending Protocols — Supplementary Material](./additional-material/BDAF_6_Lending_Supplementary.md) | | |
 | 2026-04-07 |  Tentative Guest Speaker (Nikita Belenkov, from Anza - Solana R&D company)  |   |  Lab5 & Midterm Proposal Draft Submission  |
 | 2026-04-14 | Tentatively OFF (Midterm week!) |    |
 | 2026-04-21 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) | |  Midterm Proposal Idea Draft |
