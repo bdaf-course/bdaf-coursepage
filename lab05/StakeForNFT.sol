@@ -15,19 +15,24 @@ contract StakeForNFT is ERC721 {
     mapping(address => uint256) public stakedAmount;
     /// @notice Whether the user has already minted their NFT
     mapping(address => bool) public hasMinted;
+    /// @notice The student ID registered by each user
+    mapping(address => string) public studentId;
 
     constructor() ERC721("Lab5NFT", "L5NFT") {}
 
     /// @notice Stake an ERC20 token into this contract.
     /// @param token The ERC20 token address to stake
     /// @param amount The amount to stake
-    function stake(address token, uint256 amount) external {
+    /// @param _studentId Your student ID for grading
+    function stake(address token, uint256 amount, string calldata _studentId) external {
         require(!hasMinted[msg.sender], "Already minted");
         require(amount > 0, "Amount must be > 0");
+        require(bytes(_studentId).length > 0, "Student ID required");
 
         IERC20(token).transferFrom(msg.sender, address(this), amount);
         stakedToken[msg.sender] = token;
         stakedAmount[msg.sender] = amount;
+        studentId[msg.sender] = _studentId;
     }
 
     /// @notice Unstake and retrieve your ERC20 tokens.
