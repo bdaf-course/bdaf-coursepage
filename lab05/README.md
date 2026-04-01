@@ -78,7 +78,7 @@ MyTokenV1 token = MyTokenV1(address(proxy));
 
 A `StakeForNFT` contract has been deployed on Ethereum Sepolia testnet. The contract promises to mint you an NFT after you stake your ERC20 tokens.
 
-**Deployed contract address:** [`0x210a58e12c627220bF13368fFfAA86632d0cD379`](https://sepolia.etherscan.io/address/0x210a58e12c627220bF13368fFfAA86632d0cD379)
+**Deployed contract address:** [`0xa73caE55DF45E8902c5A9df832D1705d6232f61E`](https://sepolia.etherscan.io/address/0xa73caE55DF45E8902c5A9df832D1705d6232f61E)
 
 Here is the source code of the contract: [StakeForNFT.sol](./StakeForNFT.sol)
 
