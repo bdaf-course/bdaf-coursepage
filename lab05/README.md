@@ -150,7 +150,7 @@ Submit the following items in your GitHub repository's lab05 README.md (excludin
    - What happened when you called `unstake`? Did you get your tokens back?
    - How did you retrieve your tokens?
    - What does this teach you about interacting with unverified contracts?
-5. Transaction hash of your successful `mint` call (NFT received)
+6. Transaction hash of your successful `mint` call (NFT received)
 
 ---
 
