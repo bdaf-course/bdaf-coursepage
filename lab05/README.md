@@ -2,7 +2,7 @@
 
 **Deadline:** April 7th
 
-**Submission:** TBD
+**Submission:** https://forms.gle/hntPA1M7USo3sQup9
 
 ---
 
@@ -138,7 +138,7 @@ Your task: **figure out a way to make the StakeForNFT contract's balance of your
 
 # Deliverables
 
-Submit the following:
+Submit the following items in your GitHub repository's lab05 README.md (excluding transaction hashes and addresses. You should submit them in the google form) :
 
 1. Your GitHub repository containing:
    - Your upgradeable ERC20 contract(s)
