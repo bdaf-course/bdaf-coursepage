@@ -22,6 +22,7 @@ After registration, query your instance from the factory:
 function instances(string studentId) external view returns (
     address wallet,
     address dex,
+    address flashLoanPool, // Your capital source
     address lender,        // Challenge 1
     address liquidator,    // Challenge 2
     address rebalancer,    // Challenge 3
@@ -39,13 +40,14 @@ All contracts are **verified on Etherscan**. Read the source code carefully.
 
 Key contracts to study:
 - **SimpleDEX** — a constant-product AMM (`x * y = k`)
+- **FlashLoanPool** — your capital source (flash loans)
 - **VulnerableLender** — Challenge 1
 - **VulnerableLiquidator** — Challenge 2
 - **VulnerableRebalancer** — Challenge 3
 
 ### 4. Exploit
 
-Each protocol has a `flashLoan` function. You can borrow tokens with zero capital — as long as you return them within the same transaction.
+A **FlashLoanPool** is deployed for each student, funded with 50,000 of each token. You can borrow tokens with zero capital — as long as you return them within the same transaction.
 
 ```solidity
 interface IFlashBorrower {
@@ -55,10 +57,10 @@ interface IFlashBorrower {
 
 To use a flash loan:
 1. Deploy a contract that implements `IFlashBorrower`
-2. Call `flashLoan(token, amount, data)` on the protocol
-3. The protocol sends you the tokens, then calls your `onFlashLoan` callback
+2. Call `flashLoan(token, amount, data)` on the **FlashLoanPool**
+3. The pool sends you the tokens, then calls your `onFlashLoan` callback
 4. Do whatever you need inside the callback
-5. Ensure the tokens are returned before `onFlashLoan` returns
+5. Ensure the tokens are returned to the pool before `onFlashLoan` returns
 
 ### 5. Verify
 
@@ -100,15 +102,15 @@ The dummy borrower's address is stored in your factory instance.
 
 ### Challenge 3: VulnerableRebalancer (3 points)
 
-A treasury management contract that maintains a 50/50 portfolio of TokenA and TokenB. Anyone can call `rebalance()` to restore the target allocation.
+A treasury management contract that maintains a balanced portfolio of TokenA and TokenB. Anyone can swap tokens with the treasury at the current market price.
 
 **Your goal:** Reduce the treasury's total value by at least 10%.
 
 Relevant functions to study:
 - `getPrice()`
 - `getTreasuryValue()`
-- `rebalance()`
-- `flashLoan(address token, uint256 amount, bytes calldata data)`
+- `swapAForB(uint256 amountIn)`
+- `swapBForA(uint256 amountIn)`
 
 ---
 
@@ -127,9 +129,9 @@ Relevant functions to study:
 
 | Contract | Address |
 |----------|---------|
-| ChallengeFactory | [`0x144DA18462383657f1077995bc55B6f9B5D48cC4`](https://eth-sepolia.blockscout.com/address/0x144DA18462383657f1077995bc55B6f9B5D48cC4) |
-| TokenA (CTA) | [`0x79e0CD7Aeed71C55F818107CEAb5C99F7864F603`](https://eth-sepolia.blockscout.com/address/0x79e0CD7Aeed71C55F818107CEAb5C99F7864F603) |
-| TokenB (CTB) | [`0x43b932c817068B9D1FA84CfCEc7d8d0e504114e9`](https://eth-sepolia.blockscout.com/address/0x43b932c817068B9D1FA84CfCEc7d8d0e504114e9) |
+| ChallengeFactory | [`0x35c73628b4FaD218A2B0B24098D9E0B7CBB45eF7`](https://eth-sepolia.blockscout.com/address/0x35c73628b4FaD218A2B0B24098D9E0B7CBB45eF7) |
+| TokenA (CTA) | [`0x52fddb524B9975c5CFC53fAd0C43B54807AB5B28`](https://eth-sepolia.blockscout.com/address/0x52fddb524B9975c5CFC53fAd0C43B54807AB5B28) |
+| TokenB (CTB) | [`0xe2632E10Da25B80dcE5eE6965eF042FF9Ff29aec`](https://eth-sepolia.blockscout.com/address/0xe2632E10Da25B80dcE5eE6965eF042FF9Ff29aec) |
 
 ---
 
