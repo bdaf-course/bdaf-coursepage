@@ -39,9 +39,9 @@ Visit this page to see the full list of past projects - [Hackathon Project Showc
 | | - [Lending Protocols — Supplementary Material](./additional-material/BDAF_6_Lending_Supplementary.md) | | |
 | 2026-04-07 |  Tentative Guest Speaker (Nikita Belenkov, from Anza - Solana R&D company)  |   |  Lab5 & Midterm Proposal Draft Submission  |
 | 2026-04-14 | Tentatively OFF (Midterm week!) |    |
-| 2026-04-21 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) | |  Midterm Proposal Idea Draft |
-| 2026-04-28 | [Onsite Lab](./slides/OnsiteLab.md) |   | Midterm Proposal |
-| 2026-05-05 | Account Abstraction  |   |  |
+| 2026-04-21 | [Onsite Lab 2](./slides/OnsiteLab2.md) | |  |
+| 2026-04-28 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) |   | Midterm Proposal Idea Draft |
+| 2026-05-05 | Account Abstraction  |   | Midterm Proposal |
 | 2026-05-12 | MEV |   |  |
 | 2026-05-19 | [Review of Key concepts](./KeyConcepts.md)  |   |  |
 | 2026-05-26 | (TBD) |   |  |
