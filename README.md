@@ -41,6 +41,10 @@ Visit this page to see the full list of past projects - [Hackathon Project Showc
 | 2026-04-14 | Tentatively OFF (Midterm week!) |    |
 | 2026-04-21 | [Onsite Lab 2](./slides/OnsiteLab2.md) | |  |
 | 2026-04-28 | [Security Audits](./slides/BDAF_8_security_audit.pdf) & [Bridges](./slides/BDAF_9_Bridges.pdf) |   | Midterm Proposal Idea Draft |
+| | **Readings:** | | |
+| | - [Smart Contract Security Audits — Supplementary Material](./additional-material/BDAF_8_Security_Audit_Supplementary.md) | | |
+| | - [Cross-Chain Bridges — Supplementary Material](./additional-material/BDAF_9_Bridges_Supplementary.md) | | |
+| | - [LayerZero Architecture and the KelpDAO Incident — Supplementary Material](./additional-material/BDAF_9b_LayerZero_Incident.md) | | |
 | 2026-05-05 | Account Abstraction  |   | Midterm Proposal |
 | 2026-05-12 | MEV |   |  |
 | 2026-05-19 | [Review of Key concepts](./KeyConcepts.md)  |   |  |
